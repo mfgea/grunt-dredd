@@ -15,7 +15,9 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('dredd', 'Grunt wrapper for Dredd API Blueprint tester', function() {
+  grunt.registerTask('dredd', 'Grunt wrapper for Dredd API Blueprint tester', function() {
+
+    var done = grunt.task.current.async();
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
@@ -31,9 +33,24 @@ module.exports = function(grunt) {
 
     var dreddInstance = new Dredd(dreddConfiguration);
 
-    dreddInstance.run();
+    dreddInstance.run(function(error, stats){
+      if (error) {
+        if (error.message) {
+          grunt.log.error(error.message);
+        }
+        if (error.stack) {
+          grunt.log.error(error.stack);
+        }
+        done(false);
+      }
+      if (stats.failures + stats.errors > 0) {
+        done(false);
+      } else {
+        done(true);
+      }
+    });
 
-    console.log('Dredd test run at ' + dreddConfiguration.options.server + ', using ' + options.src);
+    grunt.log.write('Dredd test run at ' + dreddConfiguration.options.server + ', using ' + options.src);
 
   });
 
