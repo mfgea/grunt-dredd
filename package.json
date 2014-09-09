@@ -1,7 +1,7 @@
 {
   "name": "grunt-dredd",
   "description": "Grunt wrapper for Dredd API Blueprint tester",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/mfgea/grunt-dredd",
   "author": "Matias Gea <matigea@gmail.com>",
   "repository": {
