@@ -50,7 +50,7 @@ module.exports = function(grunt) {
       }
     });
 
-    grunt.log.write('Dredd test run at ' + dreddConfiguration.options.server + ', using ' + options.src);
+    grunt.log.write('Dredd test run at ' + dreddConfiguration.options.server + ', using ' + options.src + '\n');
 
   });
 
