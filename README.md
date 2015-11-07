@@ -46,6 +46,10 @@ Default value: `./api/api.apib`
 
 A string value that represents the path to the API Blueprint file.
 
+#### Dredd options
+
+For a list of options available for Dredd, please check out [Dredd Command Line Options](https://github.com/apiaryio/dredd#command-line-options).
+
 ### Usage Examples
 
 #### Default Options
